@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Race betting Simulator</title>
+
+    <!-- Tab icon import -->
+    <link rel="shortcut icon" type="image/x-icon" href="../img/tab-icon.ico">
+
+    <!-- Bootstrap CSS components import -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- jQuery library import -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript components import -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- Progress bar library import -->
+    <script type="text/javascript" src="../js/progressbar.js"></script>
+
+    <!-- Custom CSS import -->
+    <link rel="stylesheet" href="../css/style.css" />
+
+</head>
+<body>
+
+<header>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img class="img img-responsive brand-img" src="../img/tab-icon.ico" /></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" data-toggle="modal" data-target="#welcomeScreenModal">Tutorial</a></li>
+                    <li class="active"><a href="#">Your wins: <span id="winAmount">0</span> <span class="sr-only">(current)</span></a></li>
+                    <li><a class="newRace" href="#">New Race</a></li>
+                </ul>
+
+                <!-- Right Floated elements -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="garbageCollector" href="#">Exit</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+</header>
+
+<!-- Main content container -->
+<div class="container">
+
+    <!-- HUDs -->
+    <div class="row hud">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 racer">
+            <div class="row">
+                <div id="racer-0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- Racer progress bar div -->
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <img id="racer-0-img" class="img img-responsive racer-logo-image" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 racer">
+            <div class="row">
+                <div id="racer-1" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- Racer progress bar div -->
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <img id="racer-1-img" class="img img-responsive racer-logo-image" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 racer">
+            <div class="row">
+                <div id="racer-2" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- Racer progress bar div -->
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <img id="racer-2-img" class="img img-responsive racer-logo-image" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 racer">
+            <div class="row">
+                <div id="racer-3" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- Racer progress bar div -->
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <img id="racer-3-img" class="img img-responsive racer-logo-image" />
+                </div>
+            </div>
+        </div>
+    </div><!-- /.row - end of race simulators display -->
+
+    <div class="row">
+        <div id="racer-info" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row panel panel-default">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <img id="racer-image" class="img img-responsive" src="../img/racer.jpg"/>
+                </div><!-- end of racer image -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="manufacturer-addon">Manufacturer:</span>
+                                    <input id="racer-car-manufacturer" type="text" class="form-control" aria-describedby="manufacturer-addon"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="model-addon">Model:</span>
+                                    <input id="racer-car-model" type="text" class="form-control" aria-describedby="model-addon"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="speed-addon">Speed:</span>
+                                    <input id="racer-car-speed" type="text" class="form-control" aria-describedby="speed-addon"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="year-addon">Year:</span>
+                                    <input id="racer-car-year" type="text" class="form-control" aria-describedby="year-addon"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <button id="main-button" class="btn btn-danger btn-block">Please select a racer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end of racer data -->
+            </div>
+        </div>
+    </div><!-- /.row - end of racer info -->
+
+</div>
+
+<footer class="text-center">
+    <br/>
+    Srdjan Rakic 2016
+</footer>
+
+<div class="modal fade" id="welcomeScreenModal" tabindex="-1" role="dialog" aria-labelledby="welcomeScreen">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="welcomeScreen">Tutorial</h4>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center">
+                    Hello and welcome to our race betting simulator game!
+                </h4>
+                <br/>
+                <p class="text-center">
+                    This is a short tutorial as to how this game works.
+                </p>
+                <br/>
+                <p class="text-justify">
+                    1. Click on a racer (either the car logo or the simulation HUD) to find out more about him and his vehicle.
+                </p>
+                <p class="text-justify">
+                    2. Choose your favourite racer
+                </p>
+                <p class="text-justify">
+                    3. Click the "Bet on racer and start race" button and find out if you were right!
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="winnerModal" tabindex="-1" role="dialog" aria-labelledby="winner">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="winner">Winner!!!</h4>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center">
+                    Congratulations, you won!
+                </h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger newRace">New Race</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lostModal" tabindex="-1" role="dialog" aria-labelledby="lost">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="lost">Must be rigged...</h4>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center">
+                    So close... Better luck next time!
+                </h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger newRace">New Race</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom JS import - main JS -->
+<script type="text/javascript" src="../js/main.js"></script>
+
+</body>
+</html>
