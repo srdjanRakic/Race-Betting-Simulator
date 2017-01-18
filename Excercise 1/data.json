@@ -1,0 +1,18 @@
+[
+    {
+        "greeting": "Hi",
+        "person": "mom"
+    },
+    {
+        "greeting": "Hello",
+        "person": "dad"
+    },
+    {
+        "greeting": "How do you do",
+        "person": "officer"
+    },
+	{
+        "greeting": "Kaj si be",
+        "person": "buraz"		
+	}
+]
