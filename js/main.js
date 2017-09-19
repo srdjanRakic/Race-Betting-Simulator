@@ -23,7 +23,7 @@ var MIN_CAR_TURBO = 20;
  *   @param min The absolute minimum value to be returned
  *
  */
-function getRandomNumberInScope(max, min){
+function getRandomNumberInScope(max, min) {
     return parseInt(Math.random() * (max - min) + min);
 }
 
@@ -36,7 +36,7 @@ function getRandomNumberInScope(max, min){
  *
  *
  */
-function Car(){
+function Car() {
 
     this.manufacturer = "Default";
     this.model = "Default";
@@ -49,6 +49,7 @@ function Car(){
     this.getRandomCarManufacturer = function(){
         var newManufacturerName = "Tocak";
         var newManufacturerValue = parseInt(Math.random() * 6 + 1);
+
         switch(newManufacturerValue){
             case 1:
                 newManufacturerName = "Toyota";
@@ -82,6 +83,7 @@ function Car(){
     this.getRandomCarModel = function(){
         var newModelName = "Tocak";
         var newModelValue = parseInt(Math.random() * 6 + 1);
+
         switch(newModelValue){
             case 1:
                 newModelName = "Adventurer";
@@ -146,9 +148,10 @@ function Car(){
  * @param car      The car the racer will be competing in
  *
  */
-function Racer(location, car){
+function Racer(location, car) {
     this.HUDelementLocation = location;
     this.car = car;
+
     this.progressBar = new ProgressBar.Circle(this.HUDelementLocation, {
         duration: 200,
         color: "#FF0F0F",
@@ -157,6 +160,7 @@ function Racer(location, car){
             value: car.model
         }
     });
+
     this.currentProgress = 0.0;
 }
 
@@ -166,7 +170,7 @@ function Racer(location, car){
  * of the game. All main controls are regulated by an instance of this class.
  *
  */
-function RacingSim(){
+function RacingSim() {
 
     this.winnerIndex = 0;
     this.shouldSimulate = true;
@@ -219,99 +223,78 @@ function RacingSim(){
         });
 
         //New game buttons listener
-        document.getElementsByClassName("newRace")[0].addEventListener("click", function(event){
+        document.getElementsByClassName("newRace")[0].addEventListener("click", function() {
             location.reload();
         });
 
         //New game buttons listener
-        document.getElementsByClassName("newRace")[1].addEventListener("click", function(event){
+        document.getElementsByClassName("newRace")[1].addEventListener("click", function() {
             location.reload();
         });
 
         //New game buttons listener
-        document.getElementsByClassName("newRace")[2].addEventListener("click", function(event){
+        document.getElementsByClassName("newRace")[2].addEventListener("click", function() {
             location.reload();
         });
 
         //New game buttons listener
-        document.getElementsByClassName("garbageCollector")[0].addEventListener("click", function(event){
+        document.getElementsByClassName("garbageCollector")[0].addEventListener("click", function() {
             localStorage.clear();
             window.location.href = "http://www.google.com";
         });
 
         //Click on first HUD
         instance.HUDlocations[0].addEventListener("click", function(event){
-
-            enableBetting(0);
-
+            enableBetting(0);   
             displayRacerData(event, 0);
 
         });
 
         //Click on first HUD logo
-        document.getElementById("racer-0-img").addEventListener("click", function(event){
-
+        document.getElementById("racer-0-img").addEventListener("click", function(event) {
             enableBetting(0);
-
             displayRacerData(event, 0);
-
         });
 
         //Click on second HUD
-        instance.HUDlocations[1].addEventListener("click", function(event){
-
+        instance.HUDlocations[1].addEventListener("click", function(event) {
             enableBetting(1);
-
             displayRacerData(event, 1);
-
         });
 
         //Click on second HUD logo
-        document.getElementById("racer-1-img").addEventListener("click", function(event){
-
+        document.getElementById("racer-1-img").addEventListener("click", function(event) {
             enableBetting(1);
-
             displayRacerData(event, 1);
-
         });
 
         //Click on third HUD
-        instance.HUDlocations[2].addEventListener("click", function(event){
-
+        instance.HUDlocations[2].addEventListener("click", function(event) {
             enableBetting(2);
-
             displayRacerData(event, 2);
 
         });
 
         //Click on third HUD logo
-        document.getElementById("racer-2-img").addEventListener("click", function(event){
-
+        document.getElementById("racer-2-img").addEventListener("click", function(event) {
             enableBetting(2);
-
             displayRacerData(event, 2);
-
         });
 
         //Click on fourth HUD
-        instance.HUDlocations[3].addEventListener("click", function(event){
-
+        instance.HUDlocations[3].addEventListener("click", function(event) {
             enableBetting(3);
-
             displayRacerData(event, 3);
 
         });
 
         //Click on fourth HUD logo
-        document.getElementById("racer-3-img").addEventListener("click", function(event){
-
+        document.getElementById("racer-3-img").addEventListener("click", function(event) {
             enableBetting(3);
-
             displayRacerData(event, 3);
-
         });
 
-        document.getElementById("main-button").addEventListener("click", function(event){
+        document.getElementById("main-button").addEventListener("click", function() {
             if(document.getElementById("main-button").innerHTML.trim() === "Please select a racer"){
                 instance.displayWelcomeScreen();
             } else {
@@ -330,7 +313,7 @@ function RacingSim(){
     * Displays a splash modal with a short how-to
     *
     */
-    this.displayWelcomeScreen = function(){
+    this.displayWelcomeScreen = function() {
         $("#welcomeScreenModal").modal("show");
     };
 
@@ -339,7 +322,7 @@ function RacingSim(){
      * Displays the victory modal
      *
      */
-    function displayWinnerModal(){
+    function displayWinnerModal() {
         $("#winnerModal").modal("show");
     }
 
@@ -348,7 +331,7 @@ function RacingSim(){
      * Displays the loss modal
      *
      */
-    function displayLostModal(){
+    function displayLostModal() {
         $("#lostModal").modal("show");
     }
 
@@ -360,12 +343,10 @@ function RacingSim(){
      * @param index The index of the racer the user is betting on
      *
      */
-    function enableBetting(index){
-
+    function enableBetting(index) {
         instance.driverWithBet = index;
         document.getElementById("main-button").setAttribute("class", "btn btn-success btn-block");
         document.getElementById("main-button").innerHTML = "Bet on racer and start race";
-
     }
 
     /*
@@ -373,11 +354,12 @@ function RacingSim(){
      * Checks if victory is achieved
      *
      */
-    function checkForWinningBet(){
+    function checkForWinningBet() {
+        if (instance.driverWithBet === instance.winnerIndex) {
+             return true;
+        }
 
-        if (instance.driverWithBet === instance.winnerIndex) return true;
-        else return false;
-
+        return false;
     }
 
     /*
@@ -386,7 +368,7 @@ function RacingSim(){
      *   @param racer  The racer to simulate progress to
      *
      */
-    function doProgressSimulation(racer){
+    function doProgressSimulation(racer) {
 
         var location = racer.HUDelementLocation;
         var element = racer.progressBar;
@@ -431,9 +413,12 @@ function RacingSim(){
      *   @param year The year the car was manufactured
      *
      */
-    function shouldAddTurbo(year){
-        if (year <= 2010) return true;
-        else return false;
+    function shouldAddTurbo(year) {
+        if (year <= 2010) {
+            return true;
+        }
+
+        return false;
     }
 
     /*
@@ -442,8 +427,9 @@ function RacingSim(){
      *   @param year The year the car was manufactured
      *
      */
-    function addSpeedByModel(model){
+    function addSpeedByModel(model) {
         var bonusSpeed = 0;
+
         switch(model){
             case "Adventurer":
                 bonusSpeed = 10;
@@ -478,7 +464,7 @@ function RacingSim(){
      *   @param index The index of the racer in question
      *
      */
-    function displayRacerData(event, index){
+    function displayRacerData(event, index) {
 
         event.stopPropagation();
 
@@ -504,7 +490,7 @@ function RacingSim(){
      *   @param minTurbo The absolute minimum turbo that the vehicle can have
      *
      */
-    function getRandomTurbo(maxTurbo, minTurbo){
+    function getRandomTurbo(maxTurbo, minTurbo) {
         return getRandomNumberInScope(maxTurbo, minTurbo);
     }
 
@@ -520,7 +506,7 @@ if (localStorage.getItem("shouldDisplayWelcomeScreen") === null) localStorage.se
 //Game instance creation
 var game = new RacingSim();
 
-if (parseInt(localStorage.getItem("shouldDisplayWelcomeScreen")) === 1){
+if (parseInt(localStorage.getItem("shouldDisplayWelcomeScreen")) === 1) {
     game.displayWelcomeScreen();
     localStorage.setItem("shouldDisplayWelcomeScreen", 0);
 }

@@ -1,47 +1,35 @@
 body{
     background-color: #FAFAFA;
 }
-
 .container{
     margin-top: 60px;
 }
-
-.racer{
-}
-
 .text-center{
     text-align: center;
 }
-
 .text-justify{
     text-align: justify;
 }
-
 .brand-img{
     display: inline-block;
     max-width: 25px;
 }
-
 .vertical-center{
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
-
 #racer-image{
     max-height: 270px;
 }
-
 .panel-body>.row{
     padding: 10px 0 10px 0;
 }
-
 .racer-logo-image{
     max-height: 25px;
     margin: 0 auto;
     margin-top: -15px;
 }
-
 .hud{
     padding-bottom: 5px;
 }
